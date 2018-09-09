@@ -17,6 +17,17 @@
   // Empty Destructor
   LinkedList::~LinkedList(){}
 
+  // Getters
+  Node* LinkedList::getHead()
+  {
+    return head;
+  }
+
+  Node* LinkedList::getTail()
+  {
+    return tail;
+  }
+
   // Adders
   void LinkedList::addFirst(Node* firstNode)
   {
@@ -48,9 +59,28 @@
     count += 1;
   }
 
-  void LinkedList::concatenate(LinkedList secondList)
+  LinkedList* CloneList(LinkedList* CopyList, Node* curr, Student data)
+  {
+    if(copy == NULL)
+    {
+      copy = new LinkedList();
+    }
+    if(curr != NULL)
+    {
+      data.set_name(curr->getStudent()->get_name());
+      data.set_score(curr->getStudent()->get_score());
+      copy->addToTail(&data);
+      curr = curr->getNext();
+      Clone(copy, curr, data);
+    }
+    return copy;
+  }
+
+  void LinkedList::concatenate(LinkedList first, LinkedList secondList)
   {
 
+      first.getTail()->setNext(second.getHead());
+      second.getHead()->setPrev(first.getTail());
   }
 
 
@@ -140,3 +170,8 @@
 
 
 // Overloaders
+LinkedList& operator+=(const LinkedList& rhs){
+
+      this->concatenate(rhs);
+      return *this;
+}

@@ -13,7 +13,7 @@ Node::Node(Student *newStudent)
 {
   next = NULL;
   prev = NULL;
-  student = newStudent;
+  student = Student c(newStudent->get_name(), newStudent->get_score());
 }
 
 

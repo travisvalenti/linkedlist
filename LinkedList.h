@@ -3,6 +3,8 @@
 //Student Number: 3282012
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
+#include <string>
+#include <iostream>
 #include "Node.h"
 
 class LinkedList
@@ -15,33 +17,30 @@ public:
     ~LinkedList();
 
   // Adders
-  Node createNode(Student student);
-  void addAfter(Node);
-  void addBefore(Node);
-  void addToCurrent(Node);
-  void addToHead(Node);
-  void addToTail(Node);
-  void concatenate(LinkedList secondList);
+  void addFirst(Node*);
+  void addToHead(Student);
+  void addToTail(Student);
+  void concatenate(LinkedList);
 
   // Removers
-  void deleteNode(Node);
-  void remove(string Name);
+  void deleteNode(Node*);
+  void remove(std::string Name);
   void empty();
 
   // Sorters
-  void swap(string Name1, string Name2);
+  Node* findRec(Node* curr, std::string Name);
+  Node* findName(std::string Name);
   void sortName();
-  void sortScore();
 
   // Misc.
+  double sumList(Node* curr);
   double calcAverage();
-  int count(String name);
 
 private:
   // Member Variables
   Node *head;
   Node *tail;
-  Node *current;
+  int count;
 
 };
 

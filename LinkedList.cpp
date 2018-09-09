@@ -2,96 +2,140 @@
 //Coded by: Tom Williams
 //Student Number: 3282012
 
+#include <string>
+#include <iostream>
 #include "LinkedList.h"
 
   // Constructors
   LinkedList::LinkedList()
   {
-
+    Node *head = NULL;
+    Node *tail = NULL;
+    count = 0;
   }
 
-  // Destructor
+  // Empty Destructor
+  LinkedList::~LinkedList(){}
 
   // Adders
-  LinkedList::createNode(Student student)
+  void LinkedList::addFirst(Node* firstNode)
   {
-
+    head = firstNode;
+    tail = firstNode;
   }
 
-  LinkedList::addAfter(Node newNode)
+  void LinkedList::addToHead(Student student)
   {
-
+    Node newNode(student);
+    if(head == NULL)
+    {
+      addFirst(&newNode);
+    } else {
+      head->setPrev(&newNode);
+      newNode.setNext(head);
+      head = &newNode;
+    }
+    count += 1;
   }
 
-  LinkedList::addBefore(Node newNode)
+  void LinkedList::addToTail(Student student)
   {
-
+    Node newNode(student);
+    if(tail == NULL)
+    {
+      addFirst(&newNode);
+    }
+    count += 1;
   }
 
-  LinkedList::addToCurrent(Node newNode)
-  {
-
-  }
-
-  LinkedList::addToHead(Node newNode)
-  {
-
-  }
-
-  LinkedList::addToTail(Node newNode33
-  {
-
-  }
-
-  LinkedList::concatenate(LinkedList secondList)
+  void LinkedList::concatenate(LinkedList secondList)
   {
 
   }
 
 
   // Removers
-  LinkedList::deleteNode(Node newNode33
+  void LinkedList::deleteNode(Node *newNode)
   {
-
+    Node* curr = newNode;
+    if(curr == head)
+    {
+      if(curr == tail)
+      {
+        head = NULL;
+        tail = NULL;
+      }
+      else
+      {
+        head = curr->getNext();
+        curr->getNext()->setPrev(NULL);
+      }
+    }
+    else if(curr == tail)
+    {
+      tail = curr->getPrev();
+      curr->getPrev()->setNext(NULL);
+    }
+    curr->~Node();
   }
 
-  LinkedList::remove(string Name)
+  void LinkedList::remove(std::string Name)
   {
-
+    Node* curr = findName(Name);
+    deleteNode(curr);
   }
 
-  LinkedList::empty()
+  void LinkedList::empty()
   {
-
+    if(head != NULL)
+    {
+      deleteNode(head);
+      empty();
+    }
   }
 
 
   // Sorters
-  LinkedList::swap(string Name1, string Name2)
+  Node* LinkedList::findRec(Node* curr, std::string Name)
+  {
+    if(curr->getStudent()->get_name() != Name)
+    {
+      curr == curr->getNext();
+      findRec(curr, Name);
+    }
+    else
+    {
+      return curr;
+    }
+  }
+
+  Node* LinkedList::findName(std::string Name)
+  {
+    Node* curr = head;
+    return findRec(curr, Name);
+  }
+
+  void LinkedList::sortName()
   {
 
   }
-
-  LinkedList::sortName()
-  {
-
-  }
-
-  LinkedList::sortScore()
-  {
-
-  }
-
 
   // Misc.
-  LinkedList::calcAverage()
+  double sumList(Node* curr)
   {
-
+    double sum;
+    if(curr->getNext() != NULL)
+    {
+      curr = curr->getNext();
+      sum += sumList(curr);
+    }
+    sum += curr->getStudent()->get_score();
+    return sum;
   }
 
-  LinkedList::count(String name)
+  double LinkedList::calcAverage()
   {
-
+    return sumList(head)/count;
   }
 
 

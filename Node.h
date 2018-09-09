@@ -3,27 +3,27 @@
 //Student Number: 3282012
 #ifndef NODE_H
 #define NODE_H
-#include "student.h"
+#include "Student.h"
 
 struct Node
 {
 public:
   // Constructor
   Node();
-  Node(Student student);
+  Node(Student newStudent);
 
   // Destructor
   ~Node();
 
   // Getters
-  Node* getNext();
-  Node* getPrev();
-  Node* getStudent();
+  Node *getNext();
+  Node *getPrev();
+  Student *getStudent();
 
   // Setters
-  void setNext();
-  void setPrev();
-  void setStudent();
+  void setNext(Node *newNext);
+  void setPrev(Node *newPrev);
+  void setStudent(Student *newStu);
 
 private:
 Student *student;

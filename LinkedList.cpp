@@ -38,13 +38,14 @@
   void LinkedList::addToHead(Student student)
   {
     Node* newNode = (Node*) malloc(sizeof(Node));
-    *newNode = Node(Student);
+    *newNode = Node(student);
     if(head == nullptr)
     {
-      addFirst(&newNode);
+      //if the head is nullptr, the list must be empty. So set the first Node
+      addFirst(newNode);
     } else {
       head->setPrev(newNode);
-      newNode.setNext(head);
+      newNode->setNext(head);
       head = newNode;
     }
     ncount += 1;
@@ -53,15 +54,14 @@
   void LinkedList::addToTail(Student student)
   {
     Node* newNode = (Node*) malloc(sizeof(Node));
-    *newNode = Node(Student);
+    *newNode = Node(student);
     if(tail == nullptr)
     {
-      addFirst(&newNode);
-    }
-    else
-    {
+      //if the tail is nullptr, the list must be empty. So set the first Node
+      addFirst(newNode);
+    } else {
+      newNode->setPrev(tail);
       tail->setNext(newNode);
-      newNode.setPrev(tail);
       tail = newNode;
     }
     ncount += 1;
@@ -89,7 +89,7 @@
 
   void LinkedList::concatenate(LinkedList second)
   {
-
+      //using the standard style of linked list concatenation
       this->tail->setNext(second.getHead());
       second.getHead()->setPrev(this->tail);
   }
@@ -121,9 +121,11 @@
 
   void LinkedList::remove(std::string Name)
   {
-    std::cout << "Removing student" << std::endl;
     Node* curr = findName(Name);
-    deleteNode(curr);
+    if(curr != nullptr)
+    {
+      deleteNode(curr);
+    }
   }
 
   void LinkedList::empty()
@@ -143,6 +145,11 @@
     while(curr->getStudent()->get_name() != Name)
     {
       curr = curr->getNext();
+      if(curr->getNext() == nullptr &&
+          curr->getStudent()->get_name() != Name)
+      {
+        return nullptr;
+      }
     }
     return curr;
   }

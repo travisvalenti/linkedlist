@@ -193,5 +193,5 @@
 // Overloaders
   LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
   {
-    concatenate(rhs, lhs);
+    rhs.concatenate(lhs);
   }

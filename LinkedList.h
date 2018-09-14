@@ -42,15 +42,16 @@ public:
   double calcAverage();
   int count(std::string name);
 
+  // Overloaders
+  LinkedList& operator+=(LinkedList& rhs);
+  friend std::ostream& operator<<(std::ostream& os, LinkedList& dl);
+
+
 private:
   // Member Variables
   Node *head;
   Node *tail;
   int ncount;
-
-// Overloaders
-friend LinkedList& operator+=(LinkedList& lhs, LinkedList& rhs);
-
 };
 
 #endif

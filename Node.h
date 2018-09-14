@@ -26,7 +26,7 @@ public:
   void setStudent(Student *newStu);
 
   //Misc
-  ostream& operator<<(const Node& dn);
+friend std::ostream& operator<<(std::ostream& os, Node& dn);
 
 private:
 Student *student;

@@ -178,7 +178,18 @@
   }
 
 // Overloaders
-  LinkedList& operator+=(LinkedList& lhs, LinkedList& rhs)
+  LinkedList& LinkedList::operator+=(LinkedList& rhs)
   {
-    lhs.concatenate(rhs);
+    this->concatenate(rhs);
+  }
+
+  ostream& operator<<(std:: ostream& os, LinkedList& dl)
+  {
+      Node* curr = dl.getHead();
+      while(curr != NULL)
+      {
+        os << curr << " ";
+        curr = curr->getNext();
+      }
+      return os;
   }

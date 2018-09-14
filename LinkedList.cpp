@@ -183,7 +183,7 @@
     this->concatenate(rhs);
   }
 
-  ostream& operator<<(std:: ostream& os, LinkedList& dl)
+  std::ostream& operator<<(std::ostream& os, LinkedList& dl)
   {
       Node* curr = dl.getHead();
       while(curr != NULL)

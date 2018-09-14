@@ -55,7 +55,7 @@ void Node::setStudent(Student *newStu)
   student = newStu;
 }
 
-ostream& operator<<(std::ostream& os, Node& dn)
+std::ostream& operator<<(std::ostream& os, Node& dn)
 {
     os << dn.getStudent();
     return os;

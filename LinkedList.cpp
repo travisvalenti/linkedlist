@@ -193,5 +193,5 @@
 // Overloaders
   LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
   {
-    LinkedList::concatenate(rhs, lhs);
+    concatenate(rhs, lhs);
   }

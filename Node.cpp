@@ -18,7 +18,9 @@ Node::Node(Student newStudent)
 
 
 // Empty Destructor
-Node::~Node(){}
+Node::~Node(){
+  // free(this);
+}
 
 
 // Getters

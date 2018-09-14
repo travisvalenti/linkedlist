@@ -9,8 +9,8 @@
   // Constructors
   LinkedList::LinkedList()
   {
-    Node *head = NULL;
-    Node *tail = NULL;
+    head = NULL;
+    tail = NULL;
     ncount = 0;
   }
 
@@ -37,24 +37,29 @@
 
   void LinkedList::addToHead(Student student)
   {
-    Node newNode(student);
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    *newNode = Node(student);
     if(head == NULL)
     {
-      addFirst(&newNode);
+      addFirst(newNode);
     } else {
-      head->setPrev(&newNode);
-      newNode.setNext(head);
-      head = &newNode;
+      head->setPrev(newNode);
+      newNode->setNext(head);
+      head = newNode;
     }
     ncount += 1;
   }
 
   void LinkedList::addToTail(Student student)
   {
-    Node newNode(student);
-    if(tail == NULL)
-    {
-      addFirst(&newNode);
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    *newNode = Node(student);
+    if (tail == NULL) {
+      addFirst(newNode);
+    } else {
+      newNode->setPrev(tail);
+      tail->setNext(newNode);
+      tail = newNode;
     }
     ncount += 1;
   }
@@ -81,7 +86,6 @@
 
   void LinkedList::concatenate(LinkedList second)
   {
-
       this->tail->setNext(second.getHead());
       second.getHead()->setPrev(this->tail);
   }
@@ -132,10 +136,10 @@
   Node* LinkedList::findName(std::string Name)
   {
     Node* curr = head;
-    while(curr->getStudent()->get_name() != Name)
-    {
-      curr = curr->getNext();
-    }
+    // while(curr->getStudent()->get_name().compare(Name) == 0)
+    // {
+    //   curr = curr->getNext();
+    // }
     return curr;
   }
 
@@ -183,7 +187,7 @@
     this->concatenate(rhs);
   }
 
-  std::ostream& operator<<(std::ostream& os, LinkedList& dl)
+  ostream& operator<<(std:: ostream& os, LinkedList& dl)
   {
       Node* curr = dl.getHead();
       while(curr != NULL)

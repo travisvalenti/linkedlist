@@ -61,26 +61,29 @@
 
   LinkedList* CloneList(LinkedList* CopyList, Node* curr, Student data)
   {
-    if(copy == NULL)
+    if(CopyList == NULL)
     {
-      copy = new LinkedList();
+
     }
-    if(curr != NULL)
-    {
-      data.set_name(curr->getStudent()->get_name());
-      data.set_score(curr->getStudent()->get_score());
-      copy->addToTail(&data);
-      curr = curr->getNext();
-      Clone(copy, curr, data);
-    }
-    return copy;
+    //{
+    //  copy = new LinkedList();
+    //}
+    //if(curr != NULL)
+    //{
+    //  data.set_name(curr->getStudent()->get_name());
+    //  data.set_score(curr->getStudent()->get_score());
+    //  copy->addToTail(&data);
+    //  curr = curr->getNext();
+    //  Clone(copy, curr, data);
+    //}
+    return CopyList;
   }
 
-  void LinkedList::concatenate(LinkedList first, LinkedList secondList)
+  void LinkedList::concatenate(LinkedList second)
   {
 
-      first.getTail()->setNext(second.getHead());
-      second.getHead()->setPrev(first.getTail());
+      this->tail->setNext(second.getHead());
+      second.getHead()->setPrev(this->tail);
   }
 
 
@@ -150,6 +153,11 @@
 
   }
 
+  void LinkedList::order()
+  {
+    this->sortName();
+  }
+
   // Misc.
   double sumList(Node* curr)
   {
@@ -170,8 +178,7 @@
 
 
 // Overloaders
-LinkedList& operator+=(const LinkedList& rhs){
-
-      this->concatenate(rhs);
-      return *this;
+LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
+{
+  concatenate(rhs, lhs);
 }

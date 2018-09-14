@@ -47,49 +47,49 @@ int main()
 	initialize(firstList, secondList);
 
 	cout << "Start lists:" << endl;
-	//cout << "List 1: " << firstList  <<  endl;
-	//cout << "List 2: " << secondList <<  endl << endl;
+	cout << "List 1: " << firstList  <<  endl;
+	cout << "List 2: " << secondList <<  endl << endl;
 
 	cout << "Concatenating the two lists onto list '1':" << endl;
-	//firstList += secondList;
-    //cout << "List 1: " << firstList  << endl;
-	//cout << "List 2: " << secondList << endl << endl;
+	firstList += secondList;
+    cout << "List 1: " << firstList  << endl;
+	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "Removing student 'Alex' from list '1':" << endl;
     firstList.remove("Alex");
-    //cout << "List 1: " << firstList  << endl;
-	//cout << "List 2: " << secondList << endl << endl;
+    cout << "List 1: " << firstList  << endl;
+	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "Removing student 'John' from list '2':" << endl;
     secondList.remove("John");
-    //cout << "List 1: " << firstList  << endl;
-	//cout << "List 2: " << secondList << endl << endl;
+    cout << "List 1: " << firstList  << endl;
+	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "Removing student 'Michelle' from both lists:" << endl;
     firstList.remove("Michelle");
     secondList.remove("Michelle");
-    //cout << "List 1: " << firstList  << endl;
-	//cout << "List 2: " << secondList << endl << endl;
+    cout << "List 1: " << firstList  << endl;
+	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "Removing student 'Fred' from list '2':" << endl;
     secondList.remove("Fred");
-  //cout << "List 1: " << firstList  << endl;
-	//cout << "List 2: " << secondList << endl << endl;
+    cout << "List 1: " << firstList  << endl;
+	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "Average of list '1': ";
-	//cout << firstList.calcAverage() << endl;
+	cout << firstList.calcAverage() << endl;
 
 	cout << "Average of list '2': ";
-	//cout << secondList.calcAverage() << endl << endl;
+	cout << secondList.calcAverage() << endl << endl;
 
 	cout << "Number of students named 'Carol': ";
-	//cout << (firstList.count("Carol") + secondList.count("Carol")) << endl << endl;
+	cout << (firstList.count("Carol") + secondList.count("Carol")) << endl << endl;
 
-	cout << "Ordered lists: " << endl;
+//	cout << "Ordered lists: " << endl;
 //	firstList.order();
 //	secondList.order();
-//	//cout << "List 1: " << firstList  << endl;
-//	//cout << "List 2: " << secondList << endl << endl;
+//	cout << "List 1: " << firstList  << endl;
+//	cout << "List 2: " << secondList << endl << endl;
 
 	cout << "The program has finished." << endl;
 	return 0;

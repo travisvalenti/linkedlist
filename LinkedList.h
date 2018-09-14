@@ -25,7 +25,7 @@ public:
   void addToHead(Student);
   void addToTail(Student);
   LinkedList* CloneList(LinkedList* CopyList, Node* curr, Student data);
-  void concatenate(LinkedList);
+  void concatenate(LinkedList second);
 
   // Removers
   void deleteNode(Node*);
@@ -36,6 +36,7 @@ public:
   Node* findRec(Node* curr, std::string Name);
   Node* findName(std::string Name);
   void sortName();
+  void order();
 
   // Misc.
   double sumList(Node* curr);
@@ -50,5 +51,6 @@ private:
 };
 
 // Overloaders
+//LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
 
 #endif

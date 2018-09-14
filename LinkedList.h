@@ -41,16 +41,17 @@ public:
   // Misc.
   double sumList(Node* curr);
   double calcAverage();
+  int count(std::string name);
 
 private:
   // Member Variables
   Node *head;
   Node *tail;
-  int count;
-
-};
+  int ncount;
 
 // Overloaders
-//LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
+friend LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs);
+
+};
 
 #endif

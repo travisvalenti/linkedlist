@@ -11,7 +11,7 @@
   {
     Node *head = NULL;
     Node *tail = NULL;
-    count = 0;
+    ncount = 0;
   }
 
   // Empty Destructor
@@ -46,7 +46,7 @@
       newNode.setNext(head);
       head = &newNode;
     }
-    count += 1;
+    ncount += 1;
   }
 
   void LinkedList::addToTail(Student student)
@@ -56,7 +56,7 @@
     {
       addFirst(&newNode);
     }
-    count += 1;
+    ncount += 1;
   }
 
   LinkedList* CloneList(LinkedList* CopyList, Node* curr, Student data)
@@ -173,12 +173,25 @@
 
   double LinkedList::calcAverage()
   {
-    return sumList(head)/count;
+    return sumList(head)/ncount;
   }
 
+  int LinkedList::count(std::string searchName)
+  {
+    Node* curr = head;
+    int num = 0;
+    while(curr->getNext() != NULL)
+    {
+      if(curr->getStudent()->get_name() == searchName)
+      {
+        num += 1;
+      }
+    }
+    return num;
+  }
 
 // Overloaders
-LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
-{
-  concatenate(rhs, lhs);
-}
+  LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
+  {
+    LinkedList::concatenate(rhs, lhs);
+  }

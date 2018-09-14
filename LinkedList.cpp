@@ -93,14 +93,13 @@
     Node* curr = newNode;
     if(curr == head)
     {
+      head = curr->getNext();
       if(curr == tail)
       {
-        head = NULL;
         tail = NULL;
       }
       else
       {
-        head = curr->getNext();
         curr->getNext()->setPrev(NULL);
       }
     }
@@ -114,6 +113,7 @@
 
   void LinkedList::remove(std::string Name)
   {
+    std::cout << "Removing student" << std::endl;
     Node* curr = findName(Name);
     deleteNode(curr);
   }
@@ -129,23 +129,14 @@
 
 
   // Sorters
-  Node* LinkedList::findRec(Node* curr, std::string Name)
-  {
-    if(curr->getStudent()->get_name() != Name)
-    {
-      curr == curr->getNext();
-      findRec(curr, Name);
-    }
-    else
-    {
-      return curr;
-    }
-  }
-
   Node* LinkedList::findName(std::string Name)
   {
     Node* curr = head;
-    return findRec(curr, Name);
+    while(curr->getStudent()->get_name() != Name)
+    {
+      curr = curr->getNext();
+    }
+    return curr;
   }
 
   void LinkedList::sortName()
@@ -159,16 +150,12 @@
   }
 
   // Misc.
-  double sumList(Node* curr)
+  double LinkedList::sumList(Node* curr)
   {
-    double sum;
-    if(curr->getNext() != NULL)
-    {
-      curr = curr->getNext();
-      sum += sumList(curr);
-    }
-    sum += curr->getStudent()->get_score();
-    return sum;
+      if ( curr != NULL )
+          return curr->getStudent()->get_score() + sumList(curr->getNext());
+      else
+          return 0;
   }
 
   double LinkedList::calcAverage()
@@ -191,7 +178,7 @@
   }
 
 // Overloaders
-  LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs)
+  LinkedList& operator+=(LinkedList& lhs, LinkedList& rhs)
   {
-    rhs.concatenate(lhs);
+    lhs.concatenate(rhs);
   }

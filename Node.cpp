@@ -9,11 +9,11 @@ Node::Node()
   student = NULL;
 }
 
-Node::Node(Student *newStudent)
+Node::Node(Student newStudent)
 {
   next = NULL;
   prev = NULL;
-  student = Student c(newStudent->get_name(), newStudent->get_score());
+  Student student(newStudent.get_name(), newStudent.get_score());
 }
 
 
@@ -34,6 +34,7 @@ Node* Node::getPrev()
 
 Student* Node::getStudent()
 {
+  std::cout << "getStudent running" << std::endl;
   return student;
 }
 
@@ -52,4 +53,11 @@ void Node::setPrev(Node *newPrev)
 void Node::setStudent(Student *newStu)
 {
   student = newStu;
+}
+
+ostream& operator<<(const Node& dn)
+{
+    this << "(" << dn.getStudent()->get_name() << ','
+              << dn.getStudent()->get_score() << ')';
+    return this;
 }

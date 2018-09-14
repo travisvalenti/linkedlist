@@ -33,7 +33,6 @@ public:
   void empty();
 
   // Sorters
-  Node* findRec(Node* curr, std::string Name);
   Node* findName(std::string Name);
   void sortName();
   void order();
@@ -50,7 +49,7 @@ private:
   int ncount;
 
 // Overloaders
-friend LinkedList& operator+=(LinkedList& rhs, LinkedList& lhs);
+friend LinkedList& operator+=(LinkedList& lhs, LinkedList& rhs);
 
 };
 

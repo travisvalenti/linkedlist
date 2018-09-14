@@ -25,6 +25,9 @@ public:
   void setPrev(Node *newPrev);
   void setStudent(Student *newStu);
 
+  //Misc
+  ostream& operator<<(const Node& dn);
+
 private:
 Student *student;
 Node *next;

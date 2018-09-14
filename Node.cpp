@@ -4,15 +4,15 @@
 #include "Node.h"
 Node::Node()
 {
-  next = NULL;
-  prev = NULL;
-  student = NULL;
+  next = nullptr;
+  prev = nullptr;
+  student = nullptr;
 }
 
 Node::Node(Student newStudent)
 {
-  next = NULL;
-  prev = NULL;
+  next = nullptr;
+  prev = nullptr;
   Student student(newStudent.get_name(), newStudent.get_score());
 }
 
@@ -34,7 +34,6 @@ Node* Node::getPrev()
 
 Student* Node::getStudent()
 {
-  std::cout << "getStudent running" << std::endl;
   return student;
 }
 

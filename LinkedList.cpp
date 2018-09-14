@@ -9,8 +9,8 @@
   // Constructors
   LinkedList::LinkedList()
   {
-    Node *head = NULL;
-    Node *tail = NULL;
+    Node *head = nullptr;
+    Node *tail = nullptr;
     ncount = 0;
   }
 
@@ -37,38 +37,46 @@
 
   void LinkedList::addToHead(Student student)
   {
-    Node newNode(student);
-    if(head == NULL)
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    *newNode = Node(Student);
+    if(head == nullptr)
     {
       addFirst(&newNode);
     } else {
-      head->setPrev(&newNode);
+      head->setPrev(newNode);
       newNode.setNext(head);
-      head = &newNode;
+      head = newNode;
     }
     ncount += 1;
   }
 
   void LinkedList::addToTail(Student student)
   {
-    Node newNode(student);
-    if(tail == NULL)
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    *newNode = Node(Student);
+    if(tail == nullptr)
     {
       addFirst(&newNode);
+    }
+    else
+    {
+      tail->setNext(newNode);
+      newNode.setPrev(tail);
+      tail = newNode;
     }
     ncount += 1;
   }
 
   LinkedList* CloneList(LinkedList* CopyList, Node* curr, Student data)
   {
-    if(CopyList == NULL)
+    if(CopyList == nullptr)
     {
 
     }
     //{
     //  copy = new LinkedList();
     //}
-    //if(curr != NULL)
+    //if(curr != nullptr)
     //{
     //  data.set_name(curr->getStudent()->get_name());
     //  data.set_score(curr->getStudent()->get_score());
@@ -96,17 +104,17 @@
       head = curr->getNext();
       if(curr == tail)
       {
-        tail = NULL;
+        tail = nullptr;
       }
       else
       {
-        curr->getNext()->setPrev(NULL);
+        curr->getNext()->setPrev(nullptr);
       }
     }
     else if(curr == tail)
     {
       tail = curr->getPrev();
-      curr->getPrev()->setNext(NULL);
+      curr->getPrev()->setNext(nullptr);
     }
     curr->~Node();
   }
@@ -120,7 +128,7 @@
 
   void LinkedList::empty()
   {
-    if(head != NULL)
+    if(head != nullptr)
     {
       deleteNode(head);
       empty();
@@ -152,7 +160,7 @@
   // Misc.
   double LinkedList::sumList(Node* curr)
   {
-      if ( curr != NULL )
+      if ( curr != nullptr )
           return curr->getStudent()->get_score() + sumList(curr->getNext());
       else
           return 0;
@@ -167,7 +175,7 @@
   {
     Node* curr = head;
     int num = 0;
-    while(curr->getNext() != NULL)
+    while(curr->getNext() != nullptr)
     {
       if(curr->getStudent()->get_name() == searchName)
       {
@@ -186,7 +194,7 @@
   std::ostream& operator<<(std::ostream& os, LinkedList& dl)
   {
       Node* curr = dl.getHead();
-      while(curr != NULL)
+      while(curr != nullptr)
       {
         os << curr << " ";
         curr = curr->getNext();

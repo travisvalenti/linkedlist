@@ -55,9 +55,8 @@ void Node::setStudent(Student *newStu)
   student = newStu;
 }
 
-ostream& operator<<(std:: ostream& os, Node& dn)
+ostream& operator<<(std::ostream& os, Node& dn)
 {
-    os << "(" << dn.getStudent()->get_name() << ','
-              << dn.getStudent()->get_score() << ')';
+    os << dn.getStudent();
     return os;
 }

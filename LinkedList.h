@@ -41,6 +41,7 @@ public:
   double sumList(Node* curr);
   double calcAverage();
   int count(std::string name);
+  std::ostream printList();
 
   // Overloaders
   LinkedList& operator+=(LinkedList& rhs);
